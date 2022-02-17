@@ -1,0 +1,22 @@
+<div class="content">
+  <div class="nav">
+    <h1>Dashboard</h1>
+    <div class="nav-btns">
+      <button mat-stroked-button color="warn">Username</button>
+      <button mat-stroked-button color="warn">Log out</button>
+    </div>
+  </div>
+  <div class="dashboard">
+    <div class="card" *ngFor="let film of allFilms">
+      <app-dashboard
+                [episodeId]="film.episode_id"
+                [title]="film.title"
+                [description]="film.opening_crawl"
+                [producer]="film.producer"
+                [created]="film.created"
+                [url]="film.url"
+      ></app-dashboard>
+    </div>
+  </div>
+</div>
+<!-- <app-auth></app-auth> -->

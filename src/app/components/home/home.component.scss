@@ -1,0 +1,38 @@
+.content {
+  max-width: 1440px;
+  margin: 15px auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 15px;
+  border: 0.5px solid #2020203f;
+  box-shadow: 0 0 61px rgba(127, 236, 250, 0.2);
+
+  h1 {
+    // flex: 1;
+    margin-left: 100px;
+  }
+}
+
+.nav-btns {
+  display: flex;
+  .mat-stroked-button  {
+    margin-right: 15px;
+  }
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  .card {
+    margin: 15px 15px;
+  }
+}
