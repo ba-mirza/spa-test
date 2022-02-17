@@ -34,5 +34,10 @@
 
   .card {
     margin: 15px 15px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
   }
 }
