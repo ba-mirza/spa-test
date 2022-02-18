@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
       this.allFilms = data.results;
       console.log(this.allFilms);
     });
+
+    this.dbService.getPlanets().subscribe(data => console.log(data));
   }
 
 }

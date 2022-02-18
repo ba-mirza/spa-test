@@ -9,7 +9,7 @@ import { DbService } from 'src/app/db.service';
 export class DashboardComponent implements OnInit {
 
   @Input()
-  episodeId!: string
+  episodeId!: number
 
   @Input()
   title!: string

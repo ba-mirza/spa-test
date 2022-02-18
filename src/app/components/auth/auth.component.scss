@@ -1,0 +1,23 @@
+.wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form {
+  margin-top: 25%;
+  background-color: #fcfcfc;
+  border: 1px solid #2020207a;
+  padding: 50px 100px;
+  box-shadow: 0 0 61px rgba(127, 236, 250, 0.2);
+
+  h1 {
+    align-items: center;
+    text-align: center;
+    font-size: 38px;
+  }
+
+  .center {
+    margin-top: 20px auto;
+    text-align: center;
+  }
+}

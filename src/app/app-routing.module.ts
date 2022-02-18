@@ -5,10 +5,9 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthComponent } from './components/auth/auth.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, canActivate: []},
-  {path: 'login', component: AuthComponent},
-
-  {path: '**', redirectTo: ''}
+  {path: '', component: AuthComponent},
+  {path: 'home', component: HomeComponent},
+  // {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

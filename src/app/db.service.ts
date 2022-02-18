@@ -20,8 +20,8 @@ export class DbService {
     return null
   }
 
-  getPlanets() {
-    return null
+  getPlanets(): Observable<any> {
+    return this.http.get(this.dbUrl + '/planets');
   }
 
   getStarships() {

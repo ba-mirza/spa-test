@@ -1,11 +1,22 @@
-<div class="auth">
-  <mat-form-field appearance="fill">
-    <mat-label>Login</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input matInput>
-  </mat-form-field>
-</div>
+<!-- <mat-form-field appearance="fill">
+      <input matInput placeholder="Simple placeholder" required>
+</mat-form-field> -->
 
+<div class="wrapper">
+  <div class="form">
+    <h1>Login</h1>
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <p class="form-text center">All rights reserved.</p>
+</div>
