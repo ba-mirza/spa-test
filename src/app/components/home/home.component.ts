@@ -15,12 +15,9 @@ export class HomeComponent implements OnInit {
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
-    this.dbService.getDataFilms().subscribe((data) => {
-      this.allFilms = data.results;
-      console.log(this.allFilms);
-    });
-
-    this.dbService.getPlanets().subscribe(data => console.log(data));
+    this.dbService.getDataFilms().subscribe(data => {
+      this.allFilms = data.result;
+    })
   }
 
 }

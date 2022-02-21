@@ -1,10 +1,14 @@
 export interface Film {
+  properties: Props
+}
+
+export interface Props {
   episode_id: number;
   title: string;
   opening_crawl: string;
   producer: string;
   created: number;
-  url: string;
+  url?: string;
 }
 
 export interface Person {

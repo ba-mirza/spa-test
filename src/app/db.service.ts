@@ -8,7 +8,7 @@ import { Film } from './_models/film-interface';
 })
 export class DbService {
 
-  private dbUrl = 'https://swapi.dev/api';
+  private dbUrl = 'https://www.swapi.tech/api/';
 
   constructor(private http: HttpClient) {}
 

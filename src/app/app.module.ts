@@ -10,10 +10,10 @@ import { HomeComponent } from './components/home/home.component';
 
 import { DashboardModule } from './components/dashboard/dashboard.module';
 
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthComponent } from './components/auth/auth.component';
 
 
