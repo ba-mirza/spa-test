@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DbService } from 'src/app/db.service';
 
 @Component({
@@ -30,8 +31,11 @@ export class DashboardComponent implements OnInit {
   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
   originally bred for hunting.`;
 
-  constructor() {}
+  constructor(private route: Router) {}
 
+  openDetails() {
+    this.route.navigate(['/details', this.episodeId])
+  }
 
   ngOnInit(): void {
   }

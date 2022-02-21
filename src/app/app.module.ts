@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthComponent } from './components/auth/auth.component';
+import { PageDetailsComponent } from './components/page-details/page-details.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AuthComponent } from './components/auth/auth.component';
     AppComponent,
     HomeComponent,
     DashboardComponent,
-    AuthComponent
+    AuthComponent,
+    PageDetailsComponent
   ],
   imports: [
     BrowserModule,
