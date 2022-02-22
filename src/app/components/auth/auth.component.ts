@@ -29,16 +29,18 @@ export class AuthComponent implements OnInit {
     })
   }
 
-  onSubmit(): void {
-    if(this.form.valid) {
-      console.log(this.form.value);
-      this.authService.signUp(this.form.value);
-      this.route.navigate(['/home']);
-    } else return
-  }
+  login() {
+    const values = this.form.value;
 
-  // signUpLogin() {
-  //   this.route.navigate(['home'])
-  // }
+    if(values.email && values.password) {
+      this.authService.login(values.email, values.password)
+        .subscribe(
+          () => {
+            console.log('User is logged in');
+            this.route.navigate(['/home']);
+          }
+        )
+    }
+  }
 
 }
