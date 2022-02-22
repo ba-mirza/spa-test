@@ -9,9 +9,12 @@ import { DbService } from 'src/app/db.service';
 })
 export class PageDetailsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params: Params) => console.log(`Params: ${params}`))
+    this.activatedRoute.params.subscribe((params: Params) => {
+      console.log(`Params: ${params}`)
+    })
   }
 }

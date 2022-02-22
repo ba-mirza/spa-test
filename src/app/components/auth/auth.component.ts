@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -8,13 +10,35 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  form!: FormGroup;
+
+  constructor(
+    private route: Router,
+    private fb: FormBuilder,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
-  signUpLogin() {
-    this.route.navigate(['home'])
+  initForm(): void {
+    this.form = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
+
+  onSubmit(): void {
+    if(this.form.valid) {
+      console.log(this.form.value);
+      this.authService.signUp(this.form.value);
+      this.route.navigate(['/home']);
+    } else return
+  }
+
+  // signUpLogin() {
+  //   this.route.navigate(['home'])
+  // }
 
 }

@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthComponent } from './components/auth/auth.component';
 import { PageDetailsComponent } from './components/page-details/page-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,6 +32,8 @@ import { PageDetailsComponent } from './components/page-details/page-details.com
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     DashboardModule,
     MatButtonModule,
     MatTableModule,

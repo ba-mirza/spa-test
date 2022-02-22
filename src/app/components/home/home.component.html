@@ -9,7 +9,7 @@
   <div class="dashboard">
     <div class="card" *ngFor="let film of allFilms">
       <app-dashboard
-                [episodeId]="film.properties.episode_id"
+                [uid]="film.uid"
                 [title]="film.properties.title"
                 [description]="film.properties.opening_crawl"
                 [producer]="film.properties.producer"

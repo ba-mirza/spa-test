@@ -1,9 +1,9 @@
 export interface Film {
   properties: Props
+  uid: string
 }
 
 export interface Props {
-  episode_id: number;
   title: string;
   opening_crawl: string;
   producer: string;
