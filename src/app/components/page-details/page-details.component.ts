@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { map } from 'rxjs';
 import { DbService } from 'src/app/db.service';
 
 @Component({
@@ -19,7 +20,16 @@ export class PageDetailsComponent implements OnInit {
       console.log(`Params: ${params}`)
     });
 
-
+    this.dbService.getAllOfData().pipe(
+      map(items => {
+        let array = [];
+        const newItems = items.result.properties;
+        for(let key of newItems) {
+          array.push(newItems[key])
+        }
+        return array
+      })
+    ).subscribe(x => console.log(x));
 
   }
 }

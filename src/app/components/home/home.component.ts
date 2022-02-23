@@ -17,16 +17,12 @@ export class HomeComponent implements OnInit {
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
-    this.dbService.getDataFilms().subscribe(data => {
+    this.dbService.getAllOfData().subscribe(data => {
       this.allFilms = data.result;
       // console.log(this.allFilms);
     });
 
-    this.dbService.getActorsByFilms().subscribe(result => {
-      this.actors = result[0].results;
-      this.planets = result[1].results;
-      console.log(`Actors: ${this.actors}, Planets: ${this.planets}`);
-    })
+
 
   }
 

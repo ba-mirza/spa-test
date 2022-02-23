@@ -10,15 +10,12 @@ export class DbService {
 
   constructor(private http: HttpClient) {}
 
-  getDataFilms(): Observable<any> {
+  getAllOfData(): Observable<any> {
     return this.http.get(this.dbUrl + '/films');
   }
 
-  getActorsByFilms(): Observable<any> {
-    const actors = this.http.get('https://www.swapi.tech/api/people/');
-    const planets = this.http.get('https://www.swapi.tech/api/planets/');
-
-    return forkJoin([actors, planets]);
+  getActorsByFilms() {
+    return null;
   }
 
   getPlanets(): Observable<any> {
