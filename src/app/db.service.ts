@@ -14,16 +14,7 @@ export class DbService {
     return this.http.get(this.dbUrl + '/films');
   }
 
-  getActorsByFilms() {
-    return null;
+  getChooseData(url: string): Observable<any> {
+    return this.http.get(url);
   }
-
-  getPlanets(): Observable<any> {
-    return this.http.get(this.dbUrl + '/planets');
-  }
-
-  getStarships() {
-    return null
-  }
-
 }

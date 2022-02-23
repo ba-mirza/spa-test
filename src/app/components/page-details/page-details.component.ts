@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { map } from 'rxjs';
+import { forkJoin, map } from 'rxjs';
 import { DbService } from 'src/app/db.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class PageDetailsComponent implements OnInit {
   @Input()
   uid!: string | null
 
-  links: any = null;
+  characters: any = null;
   loading: boolean = false;
 
   constructor(
@@ -34,14 +34,23 @@ export class PageDetailsComponent implements OnInit {
        let results = null;
        data.result?.forEach((item: any) => {
          if(item.uid === this.uid){
-           results = item.properties.characters
+           let characters = null;
+           results = item.properties.characters;
+           results.forEach((el: string) => {
+             this.dbService.getChooseData(el).subscribe((characters) => {
+              //  console.log(characters.result);
+               characters = characters.result;
+               console.log(characters);
+             });
+           })
          }
        });
        return results;
       })
     ).subscribe(data => {
-      this.loading = false
-      this.links = data;
+      this.loading = false;
+      this.characters = data;
+      // console.log(this.characters);
     });
 
   }

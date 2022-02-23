@@ -1,7 +1,9 @@
 <div *ngIf="loading; else notLoading">
-  <h1>loading...</h1>
+  <div class="spinner-border loading" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
 
 <ng-template #notLoading>
-  <h1>{{links | json}}</h1>
+  <h1>{{characters | json}}</h1>
 </ng-template>
