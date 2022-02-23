@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +14,11 @@ export class DbService {
     return this.http.get(this.dbUrl + '/films');
   }
 
-  getActorsByFilms() {
-    return null
+  getActorsByFilms(): Observable<any> {
+    const actors = this.http.get('https://www.swapi.tech/api/people/');
+    const planets = this.http.get('https://www.swapi.tech/api/planets/');
+
+    return forkJoin([actors, planets]);
   }
 
   getPlanets(): Observable<any> {
