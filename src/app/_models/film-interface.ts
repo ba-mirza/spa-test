@@ -4,6 +4,9 @@ export interface Film {
 }
 
 export interface Props {
+  characters: string;
+  planets: string;
+  starships: string;
   title: string;
   opening_crawl: string;
   producer: string;
@@ -13,17 +16,11 @@ export interface Props {
 
 export interface Person {
   name: string;
-  gender: Gender;
+  gender: string;
   height: number;
   mass: number;
   created: string;
 }
-
-export interface Gender {
-  male: string;
-  female: string;
-}
-
 export interface Planet {
   name: string;
   climate: string;
@@ -38,9 +35,4 @@ export interface Starship {
   passengers: string;
   length: number;
   created: string;
-}
-
-export interface User {
-  name: string;
-  password: string;
 }
