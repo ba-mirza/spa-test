@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { map } from 'rxjs';
 import { DbService } from 'src/app/db.service';
@@ -10,6 +10,12 @@ import { DbService } from 'src/app/db.service';
 })
 export class PageDetailsComponent implements OnInit {
 
+  @Input()
+  uid!: string | null
+
+  links: any = null;
+  loading: boolean = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private dbService: DbService
@@ -17,19 +23,26 @@ export class PageDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      console.log(`Params: ${params}`)
+      this.uid = params['id'];
+      console.log(this.uid)
     });
 
+    this.loading = true;
+
     this.dbService.getAllOfData().pipe(
-      map(items => {
-        let array = [];
-        const newItems = items.result.properties;
-        for(let key of newItems) {
-          array.push(newItems[key])
-        }
-        return array
+      map(data => {
+       let results = null;
+       data.result?.forEach((item: any) => {
+         if(item.uid === this.uid){
+           results = item.properties.characters
+         }
+       });
+       return results;
       })
-    ).subscribe(x => console.log(x));
+    ).subscribe(data => {
+      this.loading = false
+      this.links = data;
+    });
 
   }
 }

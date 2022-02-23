@@ -1,1 +1,7 @@
-<h1>NOT WOrking</h1>
+<div *ngIf="loading; else notLoading">
+  <h1>loading...</h1>
+</div>
+
+<ng-template #notLoading>
+  <h1>{{links | json}}</h1>
+</ng-template>
