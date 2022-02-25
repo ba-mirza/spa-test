@@ -1,9 +1,37 @@
-<div *ngIf="loading; else notLoading">
+<div *ngIf="loading; else isLoaded">
   <div class="spinner-border loading" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
 
-<ng-template #notLoading>
-  <h1>{{characters | json}}</h1>
+<ng-template #isLoaded>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Height</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let people of characters">
+        <th scope="row">1</th>
+        <td>{{people.properties.name}}</td>
+        <td>{{people.properties.gender}}</td>
+        <td>{{people.properties.height}}</td>
+      </tr> -->
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
 </ng-template>
