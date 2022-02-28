@@ -1,9 +1,5 @@
 export interface Film {
-  properties: Props
-  uid: string
-}
-
-export interface Props {
+  episode_id: number
   characters: string;
   planets: string;
   starships: string;
@@ -13,6 +9,17 @@ export interface Props {
   created: number;
   url?: string;
 }
+
+// export interface Props {
+//   characters: string;
+//   planets: string;
+//   starships: string;
+//   title: string;
+//   opening_crawl: string;
+//   producer: string;
+//   created: number;
+//   url?: string;
+// }
 
 export interface Person {
   name: string;

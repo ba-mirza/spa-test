@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { DashboardModule } from './components/dashboard/dashboard.module';
 
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -41,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatCardModule,
     MatFormFieldModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

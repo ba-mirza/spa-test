@@ -6,11 +6,15 @@ import { forkJoin, map, Observable } from 'rxjs';
 })
 export class DbService {
 
-  private dbUrl = 'https://www.swapi.tech/api';
+  private dbUrl = 'https://swapi.dev/api';
 
   constructor(private http: HttpClient) {}
 
-  getAllOfData(id?: any): Observable<any> {
+  getAllOfData(): Observable<any> {
+    return this.http.get(this.dbUrl + `/films/`);
+  }
+
+  getDataById(id?: any): Observable<any> {
     return this.http.get(this.dbUrl + `/films/${id}`);
   }
 

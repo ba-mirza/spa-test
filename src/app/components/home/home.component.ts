@@ -11,15 +11,12 @@ import { Film } from 'src/app/_models/film-interface';
 export class HomeComponent implements OnInit {
 
   allFilms: Film[] = [];
-  actors: any;
-  planets: any;
 
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
     this.dbService.getAllOfData().subscribe(data => {
-      this.allFilms = data.result;
-      console.log(this.allFilms);
+      this.allFilms = data.results;
     });
 
 
