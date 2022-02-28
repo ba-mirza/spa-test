@@ -1,3 +1,13 @@
+table {
+  width: 1000px;
+}
+
+.tableContent {
+  display: flex;
+  margin: 46px auto;
+  max-width: 1440px;
+}
+
 .loading {
   display: flex;
   margin: 100px auto;

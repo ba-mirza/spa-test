@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { forkJoin, map, Observable } from 'rxjs';
 import { DbService } from 'src/app/db.service';
+import { Person, Planet, Starship } from 'src/app/_models/film-interface';
 
 @Component({
   selector: 'app-page-details',
@@ -11,12 +12,14 @@ import { DbService } from 'src/app/db.service';
 })
 export class PageDetailsComponent implements OnInit {
 
+  planets: string[] = ['name', 'climate',  'gravity', 'population', 'created'];
+  starships: string[] = ['name', 'starship_class', 'passengers', 'length', 'created'];
+  characters: string[] = ['name', 'gender', 'height', 'mass', 'created'];
+
+  dataPlanets: any;
+
   @Input()
   uid!: string | null
-
-  public characters: any;
-  public starships: any;
-  public planets: any;
 
   loading: boolean = false;
 
@@ -28,6 +31,7 @@ export class PageDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uid = params['id'];
+      console.log(this.uid);
     });
 
     this.loading = true;
@@ -40,22 +44,21 @@ export class PageDetailsComponent implements OnInit {
         return [characters, starships, planets];
       })
     ).subscribe(data => {
-      this.characters = data[0];
-      this.starships = data[1];
-      // this.planets = data[2];
-      // console.log(this.planets);
+      this.loading = false;
+      // this.characters = data[0];
+      // this.starships = data[1];
       this._methodFor(data[2]);
     });
-
-    // this.dbService.getCharacters(this.characters).subscribe(next => console.log(next));
-
 
   }
 
   _methodFor(arg: Array<string>) {
-    for(let links of arg) {
-      this.dbService.getPlanets(links).subscribe(next => console.log(next));
-    }
+    arg.forEach((url: string) => {
+      this.dbService.getPlanets(url).subscribe(nextPlanets => {
+        this.dataPlanets = nextPlanets.result;
+        console.log(this.dataPlanets);
+      })
+    })
   }
 
 }

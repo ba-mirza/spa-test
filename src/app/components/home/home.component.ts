@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dbService.getAllOfData().subscribe(data => {
       this.allFilms = data.result;
-      // console.log(this.allFilms);
+      console.log(this.allFilms);
     });
 
 
