@@ -4,6 +4,13 @@
   </div>
 </div> -->
 
+<mat-card>
+  <mat-card-title>{{pageFilms.title}}</mat-card-title>
+    <span>{{pageFilms.producer}}</span>
+  <p>{{pageFilms.opening_crawl}}</p>
+  <span>Created: {{pageFilms.created | date: "dd.MM.yyyy"}}</span>
+</mat-card>
+
 <div class="tableContent">
 
   <mat-tab-group>
@@ -13,12 +20,12 @@
 
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let character"> 456 </td>
+          <td mat-cell *matCellDef="let character"> {{character.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="gender">
           <th mat-header-cell *matHeaderCellDef> Gender </th>
-          <td mat-cell *matCellDef="let character"> 456 </td>
+          <td mat-cell *matCellDef="let character"> {{character.mass}} </td>
         </ng-container>
 
         <ng-container matColumnDef="height">
@@ -45,7 +52,7 @@
       </table>
 
     </mat-tab>
-    <mat-tab label="starships">
+    <!-- <mat-tab label="starships">
 
       <table mat-table [dataSource]="dataStarships" class="mat-elevation-z8">
 
@@ -120,7 +127,7 @@
 
       </table>
 
-    </mat-tab>
+    </mat-tab> -->
   </mat-tab-group>
 
 </div>

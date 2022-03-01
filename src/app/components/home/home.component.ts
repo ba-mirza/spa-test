@@ -15,10 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
-    this.dbService.getAllOfData().subscribe(data => {
-      this.allFilms = data.results;
-    });
 
+    this.dbService.getAllOfData().pipe(
+      map((item) => {
+        let sortedItems = item.results;
+        sortedItems.sort((a: any, b: any): any => a.episode_id < b.episode_id ? -1 : 1)
+        return sortedItems;
+      })
+    ).subscribe(nextData => {
+      this.allFilms = nextData;
+    });
 
 
   }

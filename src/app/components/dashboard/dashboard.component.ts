@@ -10,7 +10,7 @@ import { DbService } from 'src/app/db.service';
 export class DashboardComponent implements OnInit {
 
   @Input()
-  episodeId?: number
+  episode_id!: number
 
   @Input()
   title!: string
@@ -27,17 +27,11 @@ export class DashboardComponent implements OnInit {
   @Input()
   url?: string
 
-  @Input()
-  uid!: string
-
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
 
   constructor(private route: Router) {}
 
-  openDetails() {
-    this.route.navigate(['/details', this.uid])
+  openDetails(id: number) {
+    this.route.navigate(['/details', id > 3 ? id - 3 : id + 3])
   }
 
   ngOnInit(): void {

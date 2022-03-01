@@ -17,8 +17,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { CdkTableModule } from '@angular/cdk/table';
+
 import { AuthComponent } from './components/auth/auth.component';
-import { PageDetailsComponent } from './components/page-details/page-details.component';
+import { DialogOpenDetails, PageDetailsComponent } from './components/page-details/page-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -28,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     DashboardComponent,
     AuthComponent,
-    PageDetailsComponent
+    PageDetailsComponent,
+    DialogOpenDetails
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatFormFieldModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    CdkTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

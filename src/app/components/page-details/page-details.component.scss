@@ -20,3 +20,25 @@ table {
   border-top: 1px solid transparent;
   cursor: pointer;
 }
+
+.mat-card {
+  margin: 50px auto;
+  width: 75%;
+
+  $specialColor: #202020;
+
+  span {
+    opacity: 50%;
+    font-size: 14px;
+    color: $specialColor;
+  }
+
+  p {
+    width: 550px;
+    font-size: 18px;
+    color: $specialColor;
+    line-height: 2rem;
+  }
+}
+
+
