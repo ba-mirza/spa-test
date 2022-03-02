@@ -23,8 +23,8 @@ export class DbService {
     return this.http.get(url);
   }
 
-  getCharacters(url: any): Observable<Person[]> {
-    return this.http.get<Person[]>(url);
+  getCharacters(url: any): Observable<any> {
+    return this.http.get(url);
   }
 
   getStarships(url: any): Observable<any> {

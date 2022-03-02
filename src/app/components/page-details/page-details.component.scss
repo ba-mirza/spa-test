@@ -1,9 +1,11 @@
 table {
   width: 1000px;
+  margin-bottom: 25px;
 }
 
 .tableContent {
   display: flex;
+  flex-direction: column;
   margin: 46px auto;
   max-width: 1440px;
 }
@@ -40,5 +42,4 @@ table {
     line-height: 2rem;
   }
 }
-
 

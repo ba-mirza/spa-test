@@ -10,10 +10,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post('api/login', {email, password});
-    // the HTTP call,
-    // then, i must to handle the reception of the token
+  login() {
+    return localStorage.getItem('AUTH');
   }
 
 }

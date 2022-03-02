@@ -15,7 +15,6 @@ export class AuthComponent implements OnInit {
   constructor(
     private route: Router,
     private fb: FormBuilder,
-    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -24,22 +23,17 @@ export class AuthComponent implements OnInit {
 
   initForm(): void {
     this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required, Validators.minLength(8)]
     })
   }
 
   login() {
     const values = this.form.value;
-
-    if(values.email && values.password) {
-      this.authService.login(values.email, values.password)
-        .subscribe(
-          () => {
-            console.log('User is logged in');
-            this.route.navigate(['/home']);
-          }
-        )
+    if(values) {
+      localStorage.setItem('AUTH', 'authentication');
+      this.route.navigate(['/home'])
+      this.form.reset();
     }
   }
 

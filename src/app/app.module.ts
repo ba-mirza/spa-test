@@ -1,3 +1,4 @@
+import { TuiRootModule, TuiDialogModule } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
@@ -16,12 +17,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-import { CdkTableModule } from '@angular/cdk/table';
+import { MatInputModule } from '@angular/material/input';
 
 import { AuthComponent } from './components/auth/auth.component';
-import { DialogOpenDetails, PageDetailsComponent } from './components/page-details/page-details.component';
+import { PageDetailsComponent } from './components/page-details/page-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogOpenDetails } from './components/page-details/dialog-open-details';
 
 
 @NgModule({
@@ -47,8 +48,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatTabsModule,
     MatDialogModule,
-    CdkTableModule
-  ],
+    MatInputModule,
+      TuiRootModule,
+      TuiDialogModule
+],
   providers: [],
   bootstrap: [AppComponent]
 })
