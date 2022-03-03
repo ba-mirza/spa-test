@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import { DbService } from 'src/app/db.service';
 import { Film, Person, Planet, Starship } from 'src/app/_models/film-interface';
 import { DialogOpenDetails } from './dialog-open-details';
@@ -10,7 +9,8 @@ import { DialogOpenDetails } from './dialog-open-details';
 @Component({
   selector: 'app-page-details',
   templateUrl: './page-details.component.html',
-  styleUrls: ['./page-details.component.scss']
+  styleUrls: ['./page-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageDetailsComponent implements OnInit {
 

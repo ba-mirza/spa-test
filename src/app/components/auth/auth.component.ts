@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { User } from 'src/app/_models/login.interface';
 
 @Component({
   selector: 'app-auth',
@@ -11,10 +12,12 @@ import { AuthService } from 'src/app/auth.service';
 export class AuthComponent implements OnInit {
 
   form!: FormGroup;
+  submitted: boolean = false;
 
   constructor(
     private route: Router,
     private fb: FormBuilder,
+    private auth: AuthService,
     ) { }
 
   ngOnInit(): void {
@@ -22,19 +25,30 @@ export class AuthComponent implements OnInit {
   }
 
   initForm(): void {
-    this.form = this.fb.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(8)]
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
     })
   }
 
   login() {
-    const values = this.form.value;
-    if(values) {
-      localStorage.setItem('AUTH', 'authentication');
-      this.route.navigate(['/home'])
-      this.form.reset();
+    if(this.form.invalid) {
+      return
     }
+    console.log(this.form);
+
+    this.submitted = true;
+
+    const user: User = {
+      email: this.form.value.email,
+      password: this.form.value.password
+    }
+
+    this.auth.login(user).subscribe(() => {
+      this.form.reset();
+      this.route.navigate(['home']);
+      this.submitted = false;
+    })
   }
 
 }

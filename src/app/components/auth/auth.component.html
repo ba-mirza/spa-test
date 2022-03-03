@@ -8,13 +8,13 @@
     <form class="example-form" [formGroup]="form" (ngSubmit)="login()">
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput required>
+        <input matInput formControlName="email">
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput required>
+        <input matInput formControlName="password">
       </mat-form-field>
-      <button mat-stroked-button>Join</button>
+      <button [disabled]="submitted" mat-stroked-button>Join</button>
     </form>
   </div>
   <p class="form-text center">All rights reserved.</p>

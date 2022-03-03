@@ -24,6 +24,7 @@
     "@taiga-ui/core": "^2.36.0",
     "@taiga-ui/icons": "^2.36.0",
     "@taiga-ui/kit": "^2.36.0",
+    "firebase": "^9.6.7",
     "jsonwebtoken": "^8.5.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
