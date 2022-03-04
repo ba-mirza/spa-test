@@ -2,6 +2,11 @@
   max-width: 1440px;
   margin: 15px auto;
   overflow: hidden;
+
+  h1 {
+    margin-top: 50px;
+  }
+
 }
 
 .nav {
@@ -14,7 +19,6 @@
   box-shadow: 0 0 61px rgba(127, 236, 250, 0.2);
 
   h1 {
-    // flex: 1;
     margin-left: 100px;
   }
 }
@@ -26,12 +30,13 @@
   }
 }
 
+
 .dashboard {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
+  margin: 0 -15px 0 -15px;
 
   .card {
     margin: 15px 15px;

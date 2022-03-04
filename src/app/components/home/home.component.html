@@ -6,6 +6,11 @@
       <button (click)="logOut()" mat-stroked-button color="warn">Log out</button>
     </div>
   </div>
+  <div *ngIf="loading else dashboard">
+    <mat-spinner></mat-spinner>
+  </div>
+  <ng-template #dashboard>
+    <h1 style="font-weight: 500; font-size: 14px; color: #CBD1DA;">Results: {{allFilms.length}}</h1>
   <div class="dashboard">
     <div class="card" *ngFor="let film of allFilms">
       <app-dashboard
@@ -18,4 +23,5 @@
       ></app-dashboard>
     </div>
   </div>
+  </ng-template>
 </div>

@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  public loading: boolean = false;
+
   allFilms: Film[] = [];
 
   constructor(
@@ -37,9 +39,13 @@ export class HomeComponent implements OnInit {
         return sortedItems;
       })
     ).subscribe(nextData => {
+      this.loading = false;
       this.allFilms = nextData;
     });
+
+    this.loading = true;
   }
+
 
   logOut() {
     this.auth.logout();

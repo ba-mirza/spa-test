@@ -11,6 +11,7 @@ import { HomeComponent, PizzaPartyComponent } from './components/home/home.compo
 
 import { DashboardModule } from './components/dashboard/dashboard.module';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
@@ -56,7 +57,8 @@ import { TuiCarouselModule } from '@taiga-ui/kit';
     TuiDialogModule,
     TuiCarouselModule,
     MatSnackBarModule,
-    TuiNotificationModule
+    TuiNotificationModule,
+    MatProgressSpinnerModule
 ],
   providers: [],
   bootstrap: [AppComponent]
