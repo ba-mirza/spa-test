@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FBAuthResponse } from 'src/environments/interface';
 import { User } from './_models/login.interface';
@@ -9,6 +9,8 @@ import { User } from './_models/login.interface';
   providedIn: 'root'
 })
 export class AuthService {
+
+  public error$: Subject<string> = new Subject<string>();
 
   private URL = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=';
 
@@ -28,7 +30,8 @@ export class AuthService {
     user.returnSecureToken = true;
     return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
       .pipe(
-        tap(this.setToken)
+        tap(this.setToken),
+        catchError(this.handleError.bind(this))
       )
   }
 
@@ -38,6 +41,29 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return !!this.token
+  }
+
+  private handleError(error: HttpErrorResponse): any {
+
+    const INVALID_EMAIL = 'INVALID_EMAIL';
+    const INVALID_PASSWORD = 'INVALID_PASSWORD';
+    const EMAIL_NOT_FOUND = 'EMAIL_NOT_FOUND';
+
+    const {message} = error.error.error;
+
+    switch(message) {
+      case INVALID_EMAIL:
+        this.error$.next("WRONG EMAIL: Please correct your email!")
+        break;
+      case INVALID_PASSWORD:
+        this.error$.next("WRONG PASSWORD: Forgot your password? Well, I can't help you, I'm a junior")
+        break;
+      case EMAIL_NOT_FOUND:
+        this.error$.next("EMAIL NOT FOUND: This email does not exist!")
+        break;
+    }
+
+    return throwError(error);
   }
 
   private setToken(response: FBAuthResponse | any | null) {

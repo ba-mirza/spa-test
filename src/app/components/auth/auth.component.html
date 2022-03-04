@@ -3,6 +3,9 @@
 </mat-form-field> -->
 
 <div class="wrapper">
+  <tui-notification *ngIf="auth.error$ | async as error" status="error">
+    {{error}}
+  </tui-notification>
   <div class="form">
     <h1>Login</h1>
     <form class="example-form" [formGroup]="form" (ngSubmit)="login()">

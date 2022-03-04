@@ -1,4 +1,4 @@
-import { TuiRootModule, TuiDialogModule } from "@taiga-ui/core";
+import { TuiRootModule, TuiDialogModule, TuiNotificationModule } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
@@ -55,7 +55,8 @@ import { TuiCarouselModule } from '@taiga-ui/kit';
     TuiRootModule,
     TuiDialogModule,
     TuiCarouselModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TuiNotificationModule
 ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
@@ -7,7 +7,8 @@ import { User } from 'src/app/_models/login.interface';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent implements OnInit {
 
@@ -16,8 +17,7 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private fb: FormBuilder,
-    private auth: AuthService,
+    public auth: AuthService,
     ) { }
 
   ngOnInit(): void {
@@ -47,6 +47,8 @@ export class AuthComponent implements OnInit {
     this.auth.login(user).subscribe(() => {
       this.form.reset();
       this.route.navigate(['home']);
+      this.submitted = false;
+    }, () => {
       this.submitted = false;
     })
   }
