@@ -1,4 +1,3 @@
-import { TuiRootModule, TuiDialogModule, TuiNotificationModule } from "@taiga-ui/core";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
@@ -27,6 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogOpenDetails } from './components/page-details/dialog-open-details';
 
 import { TuiCarouselModule } from '@taiga-ui/kit';
+import { TuiRootModule, TuiDialogModule, TuiNotificationModule, TUI_NOTIFICATION_DEFAULT_OPTIONS,
+  TUI_NOTIFICATION_OPTIONS,
+  TuiNotification, } from "@taiga-ui/core";
 
 @NgModule({
   declarations: [
@@ -60,7 +62,14 @@ import { TuiCarouselModule } from '@taiga-ui/kit';
     TuiNotificationModule,
     MatProgressSpinnerModule
 ],
-  providers: [],
+  providers: [{
+    provide: TUI_NOTIFICATION_OPTIONS,
+    useValue: {
+      ...TUI_NOTIFICATION_DEFAULT_OPTIONS,
+      status: TuiNotification.Error,
+      hasIcon: true,
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

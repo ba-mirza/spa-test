@@ -12,12 +12,15 @@
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
+        <mat-hint *ngIf="form.touched ? hide : show">Enter your email</mat-hint>
+        <mat-error *ngIf="form.value.email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-form-field style="margin-top: 15px;" class="example-full-width" appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password">
+        <mat-hint>Minimum counts 5</mat-hint>
       </mat-form-field>
-      <button [disabled]="submitted" mat-stroked-button>Join</button>
+      <button style="margin-top: 10px;" [disabled]="submitted" mat-stroked-button>Join</button>
     </form>
   </div>
   <p class="form-text center">All rights reserved.</p>

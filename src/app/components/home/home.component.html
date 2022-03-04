@@ -6,7 +6,7 @@
       <button (click)="logOut()" mat-stroked-button color="warn">Log out</button>
     </div>
   </div>
-  <div *ngIf="loading else dashboard">
+  <div style="justify-content: center; margin: 50px auto;" *ngIf="loading else dashboard">
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #dashboard>

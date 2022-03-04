@@ -15,6 +15,9 @@ export class AuthComponent implements OnInit {
   form!: FormGroup;
   submitted: boolean = false;
 
+  public hide: boolean = false;
+  public show: boolean = true;
+
   constructor(
     private route: Router,
     public auth: AuthService,
@@ -26,9 +29,18 @@ export class AuthComponent implements OnInit {
 
   initForm(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
+  }
+
+  public getErrorMessage() {
+    const EMAIL = this.form.value.email;
+    if(EMAIL.hasError('required')) {
+      this.submitted = true;
+      return 'You must enter email'
+    }
+    return EMAIL.hasError('email') ? 'Not a valid email' : this.submitted = true, '';
   }
 
   login() {
