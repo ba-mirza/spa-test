@@ -49,7 +49,7 @@ export class AuthService {
     const INVALID_PASSWORD = 'INVALID_PASSWORD';
     const EMAIL_NOT_FOUND = 'EMAIL_NOT_FOUND';
 
-    const {message} = error.error.error;
+    const { message } = error.error.error;
 
     switch(message) {
       case INVALID_EMAIL:
@@ -63,7 +63,7 @@ export class AuthService {
         break;
     }
 
-    return throwError(error);
+    return throwError(() => error);
   }
 
   private setToken(response: FBAuthResponse | any | null) {
