@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BehaviorSubject, delay, of } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { User } from 'src/app/_models/login.interface';
 
@@ -14,6 +15,7 @@ export class AuthComponent implements OnInit {
 
   form!: FormGroup;
   submitted: boolean = false;
+  message$?: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   public hide: boolean = false;
   public show: boolean = true;
@@ -21,9 +23,20 @@ export class AuthComponent implements OnInit {
   constructor(
     private route: Router,
     public auth: AuthService,
+    private currentRoute: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
+    this.currentRoute.queryParams.subscribe((params: Params) => {
+      if(params['loginAgain']) {
+        this.message$?.next('Please, Sign in to continue!');
+        setTimeout(() => {
+          this.message$?.next('');
+        }, 5000)
+      } else if(params['authFiled']) {
+        this.message$?.next('[AUTH FILED]: Please, could you try your login!')
+      }
+    })
     this.initForm();
   }
 

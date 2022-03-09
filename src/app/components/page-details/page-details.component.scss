@@ -1,3 +1,9 @@
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 table {
   width: 1000px;
   margin-bottom: 25px;
@@ -10,17 +16,15 @@ table {
   max-width: 1440px;
 }
 
-.loading {
-  display: flex;
-  margin: 100px auto;
-  justify-content: center;
-  align-items: center;
-}
-
 .mat-row .mat-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
   cursor: pointer;
+
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+
 }
 
 .mat-card {

@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  user?: string;
+
   public loading: boolean = false;
 
   allFilms: Film[] = [];
@@ -26,11 +28,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // if(this.auth.login()) {
-    //   this._snackBar.openFromComponent(PizzaPartyComponent, {
-    //     duration: 2000
-    //   })
-    // }
+    if(this.auth.isAuthenticated()) {
+      this._snackBar.openFromComponent(PizzaPartyComponent, {
+        duration: 2000
+      })
+    }
 
     this.dbService.getAllOfData().pipe(
       map((item) => {

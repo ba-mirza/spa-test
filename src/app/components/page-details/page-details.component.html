@@ -1,64 +1,14 @@
-<!-- <div *ngIf="loading; else isLoaded">
-  <div class="spinner-border loading" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-</div> -->
 
-<mat-card>
-  <mat-card-title>{{pageFilms.title}}</mat-card-title>
-    <span>{{pageFilms.producer}}</span>
-  <p>{{pageFilms.opening_crawl}}</p>
-  <span>Created: {{pageFilms.created | date: "dd.MM.yyyy"}}</span>
-</mat-card>
+  <mat-card>
+    <mat-card-title>{{pageFilms.title}}</mat-card-title>
+      <span>{{pageFilms.producer}}</span>
+      <p>{{pageFilms.opening_crawl}}</p>
+      <span>Created: {{pageFilms.created | date: "dd.MM.yyyy"}}</span>
+  </mat-card>
 
-
-<!-- <div tuiCarouselButtons class="wrapper">
-  <button
-      tuiIconButton
-      icon="tuiIconChevronLeftLarge"
-      title="Previous"
-      (click)="carousel.prev()"
-  ></button>
-  <tui-carousel #carousel class="carousel">
-      <tui-island *tuiItem>
-          <h2 class="tui-island__title">Monty Python and the Holy Grail</h2>
-          <p>
-              King Arthur and his Knights of the Round Table embark on a
-              surreal, low-budget search for the Holy Grail, encountering
-              many, very silly obstacles.
-          </p>
-          <div>
-              <button tuiButton appearance="primary">
-                  Buy $
-                  <tui-money [value]="12.99"></tui-money>
-              </button>
-              <button tuiButton class="tui-space_left-2">
-                  Rent $
-                  <tui-money [value]="4.99"></tui-money>
-              </button>
-          </div>
-      </tui-island>
-      <tui-island *tuiItem>
-          <tui-loader></tui-loader>
-      </tui-island>
-      <tui-island *tuiItem class="tui-island_text-align_center">
-          <h2 class="tui-island__title">Failed to load</h2>
-          <p>
-              <tui-marker-icon
-                  mode="error"
-                  src="tuiIconRemoveLarge"
-              ></tui-marker-icon>
-          </p>
-      </tui-island>
-  </tui-carousel>
-  <button
-      tuiIconButton
-      icon="tuiIconChevronRightLarge"
-      title="Next"
-      (click)="carousel.next()"
-  ></button>
-</div> -->
-
+<!-- <ng-template #isLoading>
+  <mat-spinner></mat-spinner>
+</ng-template> -->
 
 
 <div class="tableContent">
@@ -69,7 +19,7 @@
 
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let character"> {{character.name}} </td>
+          <td mat-cell *matCellDef="let character" (click)="openDialog(character)"> {{character.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="gender">
@@ -95,11 +45,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedCharacters"></tr>
         <tr mat-row
             *matRowDef="let row; columns: displayedCharacters;"
-            (click)="openDialog()"
             ></tr>
-
       </table>
+
     </mat-tab>
+
     <mat-tab label="Starships">
       <table mat-table [dataSource]="starships" class="mat-elevation-z8">
 
@@ -131,7 +81,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedStarships"></tr>
         <tr mat-row
             *matRowDef="let row; columns: displayedStarships;"
-            (click)="openDialog()"
+            (click)="openDialog(row)"
             ></tr>
 
       </table>
@@ -168,26 +118,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedPlanets"></tr>
         <tr mat-row
             *matRowDef="let row; columns: displayedPlanets;"
-            (click)="openDialog()"
+            (click)="openDialog(row)"
             ></tr>
 
       </table>
     </mat-tab>
 
   </mat-tab-group>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>

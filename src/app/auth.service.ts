@@ -26,6 +26,10 @@ export class AuthService {
     return localStorage.getItem('fb-token');
   }
 
+  userEmail(): Observable<any> {
+    return this.http.get(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`)
+  }
+
   login(user: User): Observable<any> {
     user.returnSecureToken = true;
     return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
@@ -53,13 +57,13 @@ export class AuthService {
 
     switch(message) {
       case INVALID_EMAIL:
-        this.error$.next("WRONG EMAIL: Please correct your email!")
+        this.error$.next("WRONG EMAIL: Please correct your email!");
         break;
       case INVALID_PASSWORD:
         this.error$.next("WRONG PASSWORD: Forgot your password? Well, I can't help you, I'm a junior")
         break;
       case EMAIL_NOT_FOUND:
-        this.error$.next("EMAIL NOT FOUND: This email does not exist!")
+        this.error$.next("EMAIL NOT FOUND: This email does not exist!");
         break;
     }
 

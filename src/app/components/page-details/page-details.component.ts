@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { DbService } from 'src/app/db.service';
 import { Film, Person, Planet, Starship } from 'src/app/_models/film-interface';
-import { DialogOpenDetails } from './dialog-open-details';
+import { DialogOpenDetails } from './dialog-details/dialog-open-details';
 
 @Component({
   selector: 'app-page-details',
   templateUrl: './page-details.component.html',
   styleUrls: ['./page-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageDetailsComponent implements OnInit {
 
@@ -31,16 +30,23 @@ export class PageDetailsComponent implements OnInit {
   @Input()
   episode_id!: number
 
-  loading: boolean = false;
+  // loading: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private dbService: DbService,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
     ) { }
 
-  openDialog() {
-    this.matDialog.open(DialogOpenDetails)
+  openDialog(body: any) {
+    const dialogDetails = new MatDialogConfig();
+    dialogDetails.data = body;
+    const dialogRef = this.matDialog.open(DialogOpenDetails, dialogDetails);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`after closed: ${result}`)
+    })
+
   }
 
   ngOnInit(): void {
@@ -49,11 +55,9 @@ export class PageDetailsComponent implements OnInit {
       console.log(this.episode_id);
     });
 
-    // this.loading = true;
 
     this.dbService.getDataById(this.episode_id).subscribe(nextData => {
       this.pageFilms = nextData;
-
       this.dataCharacters = nextData.characters.map((i: string) => {
         return this.dbService.getCharacters(i);
       })
