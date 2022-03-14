@@ -28,11 +28,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.auth.isAuthenticated()) {
-      this._snackBar.openFromComponent(PizzaPartyComponent, {
-        duration: 2000
-      })
-    }
+    // if(this.auth.isAuthenticated()) {
+    //   this._snackBar.openFromComponent(PizzaPartyComponent, {
+    //     duration: 2000
+    //   })
+    // }
 
     this.dbService.getAllOfData().pipe(
       map((item) => {
@@ -73,4 +73,4 @@ export class HomeComponent implements OnInit {
   `,
   ],
 })
-export class PizzaPartyComponent {}
+export class SuccesfullyComponent {}

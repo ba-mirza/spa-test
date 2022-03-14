@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{data.name}}</h2>
 <mat-dialog-content class="mat-typography">
-  <div *ngFor="let item of data | keyvalue">{{item.key}} | {{item.value}}</div>
+  <div *ngFor="let item of data | keyvalue"><span style="font-weight: 500;">{{item.key}}</span>:  {{item.value}}</div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>

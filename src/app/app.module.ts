@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent, PizzaPartyComponent } from './components/home/home.component';
+import { HomeComponent, SuccesfullyComponent } from './components/home/home.component';
 
 import { DashboardModule } from './components/dashboard/dashboard.module';
 
@@ -57,7 +57,7 @@ const NOTIFICATIONS_OPTIONS: Provider = {
     AuthComponent,
     PageDetailsComponent,
     DialogOpenDetails,
-    PizzaPartyComponent
+    SuccesfullyComponent
   ],
   imports: [
     BrowserModule,

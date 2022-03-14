@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { DbService } from 'src/app/db.service';
 import { Film, Person, Planet, Starship } from 'src/app/_models/film-interface';
 import { DialogOpenDetails } from './dialog-details/dialog-open-details';
@@ -19,13 +19,13 @@ export class PageDetailsComponent implements OnInit {
   displayedStarships: string[] = ['name', 'starship_class', 'passengers', 'length', 'created'];
   displayedCharacters: string[] = ['name', 'gender', 'height', 'mass', 'created'];
 
-  dataCharacters: any;
-  dataStarships: any;
-  dataPlanets: any;
+  dataCharacters: Person[] = [];
+  dataStarships: Starship[] = [];
+  dataPlanets: Planet[] = [];
 
-  characters: any;
-  starships: any;
-  planets: any;
+  characters: Person[] = [];
+  starships: Starship[] = [];
+  planets: Planet[] = [];
 
   @Input()
   episode_id!: number
@@ -38,7 +38,7 @@ export class PageDetailsComponent implements OnInit {
     public matDialog: MatDialog,
     ) { }
 
-  openDialog(body: any) {
+  openDialog(body: Planet | Starship | Person) {
     const dialogDetails = new MatDialogConfig();
     dialogDetails.data = body;
     const dialogRef = this.matDialog.open(DialogOpenDetails, dialogDetails);
@@ -64,7 +64,7 @@ export class PageDetailsComponent implements OnInit {
 
       forkJoin(
         this.dataCharacters,
-      ).subscribe(data => this.characters = data);
+      ).subscribe((data: Person[]) => this.characters = data);
 
       this.dataStarships = nextData.starships.map((i: string) => {
         return this.dbService.getStarships(i);
@@ -72,7 +72,7 @@ export class PageDetailsComponent implements OnInit {
 
       forkJoin(
         this.dataStarships,
-      ).subscribe(data => this.starships = data);
+      ).subscribe((data: Starship[]) => this.starships = data);
 
       this.dataPlanets = nextData.planets.map((i: string) => {
         return this.dbService.getPlanets(i);
@@ -80,7 +80,7 @@ export class PageDetailsComponent implements OnInit {
 
       forkJoin(
         this.dataPlanets,
-      ).subscribe(data => this.planets = data);
+      ).subscribe((data: Planet[]) => this.planets = data);
 
     });
 

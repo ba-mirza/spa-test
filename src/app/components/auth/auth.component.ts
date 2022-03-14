@@ -73,9 +73,7 @@ export class AuthComponent implements OnInit {
       this.form.reset();
       this.route.navigate(['home']);
       this.submitted = false;
-    }, () => {
-      this.submitted = false;
-    })
+    }, () => this.submitted = false)
   }
 
 }
